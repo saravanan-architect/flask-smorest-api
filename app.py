@@ -36,26 +36,25 @@ def create_app():
     )
 
     # Configure DB connection.
-    user = os.getenv("user", "root")
-    password = os.getenv("password", "password")
-    host_name = os.getenv("host_name", "localhost")
-    database = os.getenv("database", "flaskAPI")
+    # user = os.getenv("user", "root")
+    # password = os.getenv("password", "password")
+    # host_name = os.getenv("host_name", "localhost")
+    # database = os.getenv("database", "flaskAPI")
 
-    app.config["SQLALCHEMY_DATABASE_URI"] = (
-        f"mysql+mysqlconnector://{user}:{password}@{host_name}/{database}"
-    )
+    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///data.db"
+    # (
+    #     f"mysql+mysqlconnector://{user}:{password}@{host_name}/{database}"
+    # )
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
     # it initialize the flask sqlalchemy extension and giving it to our flask app
     db.init_app(app)
-    
+
     # migrate should be below the db.init_app(app)
     migrate = Migrate(app, db)
 
     # below code connects the flasks_smorest extensions to flask app
     api = Api(app)
-
-
 
     # secrets.SystemRandom().getrandbits(128) - use to generate secret key, key will be 128 bits long eg: 325437629466322113362707562578973386074
     app.config["JWT_SECRET_KEY"] = "flaskApi"
