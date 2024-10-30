@@ -21,5 +21,5 @@ COPY . .
 # first dot is current directory for our file system
 # second dot is current directory of workdir file system
 
-CMD ["gunicorn", "--bind    ", "0.0.0.0:80", "app:create_app()"]
+CMD ["gunicorn", "--bind", "0.0.0.0:80", "app:create_app()"]
 
