@@ -12,3 +12,6 @@ passlib
 
 # flask-migrate - when we install flask-migrate, it will automatically install a library called alembic
 flask-migrate
+
+# gunicorn - used to run our flask app in production
+gunicorn
